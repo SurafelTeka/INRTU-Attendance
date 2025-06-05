@@ -56,5 +56,5 @@ smart-attendance/
 👨‍💻 Developed by
 
 Surafel Teka Zewdie
-AI and Computer Science student at INRTU | Ethiopia
+AI and Computer Science student at INRTU |
 ✉️ surafelteka243@gmail.com
