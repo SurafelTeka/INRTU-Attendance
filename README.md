@@ -57,8 +57,10 @@ smart-attendance/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/smart-attendance.git
-   cd smart-attendance
+   git clone https://github.com/SurafelTeka/INRTU-Attendance
+   cd INRTU-Attendance
+
+   
 2. Open index.html in a modern browser (Chrome/Firefox).
 
 3. Allow camera permissions.
