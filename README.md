@@ -18,7 +18,6 @@ Try it out now:
 - Open webcam to capture group photo
 - Identify students from group photo using face recognition
 - Export attendance as an Excel (.xlsx) file
-- Offline-friendly and lightweight
 
 ## 🧠 Technologies Used
 
