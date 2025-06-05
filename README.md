@@ -34,10 +34,15 @@ A smart attendance system that uses AI-powered face recognition to automate atte
 ## 🗂️ Project Structure
 
 smart-attendance/
+
 ├── index.html
+
 ├── style.css
+
 ├── script.js
+
 ├── models/ # Face-api.js models
+
 └── README.md
 
 1. Clone the repository:
