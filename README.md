@@ -2,6 +2,13 @@
 
 A smart attendance system that uses AI-powered face recognition to automate attendance tracking from a single group photo. This is a web-based application designed for teachers to quickly and efficiently manage student attendance.
 
+## 🌐 Live Demo
+
+Try it out now:
+
+- 🔗 [attendance.zenbil.net](https://attendance.zenbil.net/)
+- 🔗 [inrtu-attendance.netlify.app](https://inrtu-attendance.netlify.app/)
+
 ## 🚀 Features
 
 - Register students with names and photos
