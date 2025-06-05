@@ -57,7 +57,7 @@ smart-attendance/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/SurafelTeka/INRTU-Attendance
+   git clone https://github.com/SurafelTeka/INRTU-Attendance.git
    cd INRTU-Attendance
 
    
