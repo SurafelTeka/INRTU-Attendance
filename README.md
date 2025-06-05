@@ -1,6 +1,8 @@
 # 📸 Smart Attendance Management System
 
 A smart attendance system that uses AI-powered face recognition to automate attendance tracking from a single group photo. This is a web-based application designed for teachers to quickly and efficiently manage student attendance.
+![image](https://github.com/user-attachments/assets/2f2823d1-ee98-4d0b-be58-c3f37d7fa1b1)
+
 
 ## 🌐 Live Demo
 
