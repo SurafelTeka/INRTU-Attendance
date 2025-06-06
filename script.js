@@ -204,7 +204,7 @@ document.getElementById("export-btn").addEventListener("click", () => {
 //Preview Image Logic
 document.getElementById("photo").addEventListener("change", function () {
   const file = this.files[0];
-  const preview = document.getElementById("group-preview");
+  const preview = document.getElementById("preview-img");
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -216,26 +216,6 @@ document.getElementById("photo").addEventListener("change", function () {
     preview.src = "";
     preview.style.display = "none";
   }
-});
-
-document.getElementById("export-btn").addEventListener("click", () => {
-  if (!attendanceLog.length) return alert("⚠️ No attendance to export.");
-
-  let csv = "Name,Date,Time\n";
-  attendanceLog.forEach((e) => {
-    csv += `${e.name},${e.date},${e.time}\n`;
-  });
-
-  const uri = encodeURI("data:text/csv;charset=utf-8," + csv);
-  const link = document.createElement("a");
-  link.setAttribute("href", uri);
-  link.setAttribute(
-    "download",
-    `attendance_${new Date().toISOString().slice(0, 10)}.csv`
-  );
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 });
 
 const openCameraBtn = document.getElementById("open-camera-btn");
