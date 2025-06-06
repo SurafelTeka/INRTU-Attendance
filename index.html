@@ -3,74 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Attendance - Register Student</title>
+    <title>Smart Attendance System</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="face-api.min.js"></script>
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1>📸 Smart Attendance</h1>
-      <h2>Register New Student</h2>
+      <header>
+        <h1>Smart Attendance System</h1>
+        <p class="subtitle">
+          AI-powered facial recognition with QR code attendance verification
+        </p>
+      </header>
 
-      <form id="register-form" class="card">
-        <label for="name">👤 Student Name:</label>
-        <input type="text" id="name" placeholder="Enter full name" required />
+      <div class="dashboard">
+        <div class="card">
+          <h2 class="card-title">👤 Register Student</h2>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="name">Student Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter full name"
+                required
+              />
+            </div>
 
-        <label for="photo">🖼️ Upload Photo:</label>
-        <input type="file" id="photo" accept="image/*" required />
+            <div class="form-group">
+              <label for="photo">Upload Photo</label>
+              <input type="file" id="photo" accept="image/*" required />
+            </div>
 
-        <div class="preview">
-          <p>📷 Photo Preview:</p>
-          <img id="preview-img" src="" alt="Preview will appear here" />
+            <div class="preview-container">
+              <p class="preview-title">Photo Preview</p>
+              <img id="preview-img" alt="Preview will appear here" />
+            </div>
+
+            <button type="submit">➕ Register Student</button>
+          </form>
+          <div id="status" class="status"></div>
         </div>
 
-        <button type="submit">➕ Register Student</button>
-      </form>
+        <div class="card">
+          <h2 class="card-title">👥 Registered Students</h2>
+          <ul id="student-list" class="student-list"></ul>
+          <button id="clear-btn" class="danger-btn">
+            🧹 Clear All Students
+          </button>
+        </div>
 
-      <p id="status" class="status"></p>
+        <div class="card">
+          <h2 class="card-title">📷 Capture Group Photo</h2>
+          <div class="camera-container">
+            <video
+              id="group-video"
+              autoplay
+              playsinline
+              style="display: none"
+            ></video>
+            <canvas id="group-snapshot-canvas" style="display: none"></canvas>
 
-      <h2>👥 Registered Students</h2>
-      <ul id="student-list" class="student-list"></ul>
-      <button id="clear-btn" class="danger-btn">🧹 Clear All Students</button>
-      <hr />
-      <h2>🎥 Mark Attendance</h2>
+            <div class="camera-controls">
+              <button id="open-group-camera-btn">📷 Open Camera</button>
+              <button id="capture-group-photo-btn" style="display: none">
+                📸 Capture Photo
+              </button>
+            </div>
 
-      <h3>📸 Upload Group Photo for Attendance</h3>
+            <div class="form-group" style="margin-top: 20px">
+              <label>Or upload a group photo:</label>
+              <input type="file" id="group-photo" accept="image/*" />
+            </div>
 
-      <video id="group-video" autoplay playsinline></video>
-<canvas id="group-snapshot-canvas" style="display: none;"></canvas>
-<img id="group-preview" style="display: none;" />
-<button id="open-group-camera-btn">📷 Open Camera</button>
-<button id="capture-group-photo-btn" style="display: none;">📸 Capture Group Photo</button>
-      
-<input type="file" id="group-photo" accept="image/*" />
-<button id="detect-attendance-btn">Detect Attendance</button>
-<br><br>
-<img id="group-preview" style="max-width: 500px; display: none;" />
-<canvas id="group-canvas"></canvas>
+            <button id="detect-attendance-btn">Detect Attendance</button>
+            <div id="detection-status" class="detection-status"></div>
 
-<h3>Attendance Log</h3>
-<table id="attendance-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody id="attendance-log"></tbody>
-  </table>
-  
+            <!-- Container for detection results -->
+            <div class="image-container" id="detection-container">
+              <canvas id="detection-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<button id="export-btn">📤 Export to CSV</button>
-        
+      <div class="attendance-section">
+        <h2 class="card-title">📊 Attendance Log</h2>
+        <div class="attendance-container">
+          <div class="card">
+            <table id="attendance-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="attendance-log"></tbody>
+            </table>
+            <button id="export-btn">📤 Export to CSV</button>
+          </div>
+
+          <div class="card qr-section">
+            <h3 class="qr-title">📲 Attendance QR Code</h3>
+            <div id="qrcode"></div>
+            <p class="qr-instruction">
+              Scan this QR code to view the attendance log on your mobile
+              device. The QR code updates automatically as attendance is
+              recorded.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        Smart Attendance System &copy; 2025 | Authored by Surafel Teka
       </div>
     </div>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"
-    ></script>
-    <script defer src="script.js"></script>
   </body>
 </html>
